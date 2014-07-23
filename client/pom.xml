@@ -45,7 +45,7 @@
     <project.mainclass>cz.xelfi.test.client.Main</project.mainclass>
     <bck2brwsr.version>0.9</bck2brwsr.version>
     <bck2brwsr.obfuscationlevel>FULL</bck2brwsr.obfuscationlevel>
-    <nb.html.version>0.8</nb.html.version>
+    <nb.html.version>1.0-SNAPSHOT</nb.html.version>
     <nb.pages>index.html</nb.pages>
     <nb.cp>true</nb.cp>
   </properties>
@@ -198,6 +198,11 @@
           <artifactId>javafx</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>shared</artifactId>
+      <version>0.3-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <profiles>

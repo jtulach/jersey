@@ -44,9 +44,11 @@ public final class Main {
      * Called when the page is ready.
      */
     public static void onPageLoad() throws Exception {
-        Data d = new Data();
-        d.setMessage("Hello World from HTML and Java!");
+        UI d = new UI();
+        final String baseUrl = "http://localhost:8080/contacts/";
+        d.setUrl(baseUrl);
         d.applyBindings();
+        d.connect();
     }
     
 }

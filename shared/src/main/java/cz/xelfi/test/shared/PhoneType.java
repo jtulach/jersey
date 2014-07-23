@@ -5,6 +5,10 @@ import net.java.html.json.ComputedProperty;
 import net.java.html.json.Model;
 import net.java.html.json.Property;
 
+public enum PhoneType {
+    HOME, WORK, MOBILE;
+}
+
 @Model(className = "Contact", properties = {
     @Property(name = "firstName", type = String.class),
     @Property(name = "lastName", type = String.class),
@@ -59,9 +63,5 @@ final class Contacts {
             }
             return null;
         }
-    }
-    
-    public static enum PhoneType {
-        HOME, WORK, MOBILE;
     }
 }

@@ -78,5 +78,11 @@
             <version>${net.java.html.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>cz.xelfi.test</groupId>
+            <artifactId>shared</artifactId>
+            <version>0.3-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

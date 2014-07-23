@@ -3,63 +3,60 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <style type="text/css">
-            @-webkit-keyframes spin {
-                0% { -webkit-transform: rotate(0deg); }
-                100% { -webkit-transform: rotate(360deg); }
-            }
-
-            input {
-                width: 100%;
-            }
-
-            .rotate {
-                -webkit-animation-name: spin;
-                -webkit-animation-duration: 3s;
-                -webkit-animation-iteration-count: infinite;
-                -webkit-animation-direction: alternate;
-            }
-
-            #scene {
-                position: relative;
-                top: 60px;
-                text-align: center;
-            }
-            
-            #words span {
-                border: 1px solid #ccc;
-                background: rgba(255,255,155,0.8);
-                text-align: center;
-                font-size: 30px;                
-                -webkit-box-shadow: inset 0 0 40px rgba(0,0,0,0.4);
-                position: absolute;
-            }
-
-            #words span:nth-child(1) { left: 45%; top: 0px; }
-            #words span:nth-child(2) { left: 25%; top: 100px; }
-            #words span:nth-child(3) { left: 65%; top: 100px; }
-            #words span:nth-child(4) { left: 10%; top: 200px; }
-            #words span:nth-child(5) { left: 45%; top: 200px; }
-            #words span:nth-child(6) { left: 80%; top: 200px; }
-            
-        </style>
-
     </head>
     <body>
-        <h1>Words Demo</h1>
-        <input data-bind="value: message, valueUpdate: 'afterkeydown'">
+        <h1>Create, Read, Update, Delete</h1>
+        
+        Server URL:
+        <input data-bind="value: url, valueUpdate: 'afterkeydown'" size="60">
+        <button data-bind="click: connect">Connect</button>
         <br>
-        <button data-bind="enable: !rotating(), click: $root.turnAnimationOn">Start</button>
-        <button data-bind="enable: rotating, click: $root.turnAnimationOff">Stop</button>
-        <button data-bind="enable: !on(), click: $root.rotate5s">Rotate Few Seconds</button>
-        <button data-bind="click: $root.showScreenSize">Screen Size!</button>
+        <table>
+            <thead>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>Phone info</th>
+                <th></th>
+            </thead>
+            <tbody data-bind="foreach: contacts">
+                <tr>
+                    <td data-bind="text: firstName"></td>
+                    <td data-bind="text: lastName"></td>
+                    <td data-bind="with: address">
+                        <span data-bind="text: street"></span>
+                        <span data-bind="text: town"></span>
+                    </td>
+                    <td data-bind="text: callInfo"></td>
+                    <td><a href="#" data-bind="click: $root.edit">Edit</a></td>
+                    <td><a href="#" data-bind="click: $root.delete">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
 
-        <div id="scene">
-            <span id="words" data-bind="foreach: words">
-                <span data-bind="text: $data, css: { 'rotate' : $root.rotating } "></span>
-            </span>
+        <button data-bind="click: $root.addNew">Add new</button>
+        
+        <script type="text/html" id="edit-contact">
+            First name: <input data-bind="value: firstName">
+            Last name: <input data-bind="value: lastName">
+            <div data-bind="with: address">
+                Street: <input data-bind="value: street">
+                Town: <input data-bind="value: town">
+            </div>
+            <div data-bind="foreach: phones">
+                <div>
+                Number: <input data-bind="value: number">
+                type: <input data-bind="value: type">
+                <span data-bind="text: validatePhone"></span>
+                </div>
+            </div>
+            <button data-bind="click: $root.addPhoneToEdited">Another phone</button>
+        </script>
+
+        <div data-bind="template: { name: 'edit-contact', if: edited, data: edited }">
         </div>
+        
+        <div data-bind="text: message"></div>
         
         <!-- boot bck2brwsr -->
         <script type="text/javascript" src="bck2brwsr.js"></script>
