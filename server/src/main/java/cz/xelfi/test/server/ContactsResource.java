@@ -17,16 +17,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 @Path("/contacts/") @Singleton
 public final class ContactsResource {
     private final List<Contact> contacts = new CopyOnWriteArrayList<>();
+    private int counter;
     
     public ContactsResource() {
         contacts.add(new Contact(
-            "007",    
+            "000",    
             "Jaroslav", "Tulach", 
             new Address("V Parku 2308", "Praha 4"), 
             new Phone("+420 2 2143 8941", PhoneType.WORK)
@@ -54,6 +54,7 @@ public final class ContactsResource {
     public List<Contact> addContact(Contact c) {
         validatePhones(c);
         contacts.add(c);
+        c.setId("X" + ++counter);
         return contacts;
     }
     

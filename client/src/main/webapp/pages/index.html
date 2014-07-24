@@ -45,16 +45,18 @@
             </div>
             <div data-bind="foreach: phones">
                 <div>
-                Number: <input data-bind="value: number">
+                Number: <input data-bind="value: number, valueUpdate: 'afterkeydown'">
                 type: <input data-bind="value: type">
+                <button data-bind="click: $root.removePhoneEdited">-</button>
+                <button data-bind="click: $root.addPhoneEdited">+</button>
                 <span data-bind="text: validatePhone"></span>
                 </div>
             </div>
-            <button data-bind="click: $root.addPhoneToEdited">Another phone</button>
         </script>
 
         <div data-bind="template: { name: 'edit-contact', if: edited, data: edited }">
         </div>
+        <button data-bind="click: commit">Commit</button>
         
         <div data-bind="text: message"></div>
         

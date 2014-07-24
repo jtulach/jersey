@@ -29,6 +29,23 @@ final class UIModel {
         ui.setMessage("Loaded " + arr.size() + " contacts.");
     }
 
+    @OnReceive(method = "POST", url = "{url}", data = Contact.class, onError = "cannotConnect") 
+    static void addContact(UI ui, List<Contact> updatedOnes, Contact newOne) {
+        ui.getContacts().clear();
+        ui.getContacts().addAll(updatedOnes);
+        ui.setMessage("Created " + newOne.getLastName() + ". There is " + updatedOnes.size() + " contacts.");
+        ui.setSelected(null);
+        ui.setEdited(null);
+    }
+    @OnReceive(method = "PUT", url = "{url}/{id}", data = Contact.class, onError = "cannotConnect") 
+    static void updateContact(UI ui, List<Contact> updatedOnes, Contact original) {
+        ui.getContacts().clear();
+        ui.getContacts().addAll(updatedOnes);
+        ui.setMessage("Updated " + original.getLastName() + ". There is " + updatedOnes.size() + " contacts.");
+        ui.setSelected(null);
+        ui.setEdited(null);
+    }
+    
     @OnReceive(method = "DELETE", url = "{url}/{id}", onError = "cannotConnect") 
     static void deleteContact(UI ui, List<Contact> remainingOnes, Contact original) {
         ui.getContacts().clear();
@@ -46,7 +63,9 @@ final class UIModel {
     
     @Function static void addNew(UI ui) {
         ui.setSelected(null);
-        ui.setEdited(new Contact());
+        final Contact c = new Contact();
+        c.getPhones().add(new Phone("+420 000 000 000", PhoneType.HOME));
+        ui.setEdited(c);
     }
     
     @Function static void edit(UI ui, Contact data) {
@@ -58,7 +77,24 @@ final class UIModel {
         ui.deleteContact(ui.getUrl(), data.getId(), data);
     }
     
-    @Function static void addPhoneToEdited(UI ui) {
+    @Function static void commit(UI ui) {
+        final Contact e = ui.getEdited();
+        if (e == null) {
+            return;
+        }
+        final Contact s = ui.getSelected();
+        if (s != null) {
+            ui.updateContact(ui.getUrl(), s.getId(), e, e);
+        } else {
+            ui.addContact(ui.getUrl(), e, e);
+        }
+    }
+    
+    @Function static void addPhoneEdited(UI ui) {
         ui.getEdited().getPhones().add(new Phone("", PhoneType.HOME));
+    }
+
+    @Function static void removePhoneEdited(UI ui, Phone data) {
+        ui.getEdited().getPhones().remove(data);
     }
 }

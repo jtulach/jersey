@@ -47,6 +47,8 @@ public final class Main {
         UI d = new UI();
         final String baseUrl = "http://localhost:8080/contacts/";
         d.setUrl(baseUrl);
+        d.setEdited(null);
+        d.setSelected(null);
         d.applyBindings();
         d.connect();
     }
