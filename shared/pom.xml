@@ -7,7 +7,7 @@
         <version>0.3-SNAPSHOT</version>
     </parent>
     <artifactId>shared</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <dependencies>
         <dependency>
             <groupId>org.netbeans.html</groupId>
@@ -26,4 +26,20 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>cz.xelfi.test.shared</Export-Package>
+                        <Bundle-SymbolicName>cz.xelfi.test.shared</Bundle-SymbolicName>
+                    </instructions>
+                </configuration>                
+            </plugin>
+        </plugins>
+    </build>
 </project>
