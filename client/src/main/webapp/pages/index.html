@@ -25,6 +25,7 @@ th {
     <body>
         <h1>Create, Read, Update, Delete</h1>
         
+        <script type="text/html" id="list-contacts">
         <table>
             <tr>
                 <th>Name</th>
@@ -49,6 +50,7 @@ th {
                 </tr>
             </tbody>
         </table>
+        </script>
 
         <script type="text/html" id="edit-contact">
             First name: <input data-bind="value: firstName">
@@ -70,6 +72,9 @@ th {
             <button data-bind="click: $root.cancel">Cancel</button>
         </script>
 
+        <div data-bind="template: { name: 'list-contacts', if: !edited() }">
+        </div>
+        
         <div data-bind="template: { name: 'edit-contact', if: edited, data: edited }">
         </div>
         
