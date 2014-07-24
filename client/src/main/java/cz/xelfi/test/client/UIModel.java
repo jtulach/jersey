@@ -58,7 +58,7 @@ final class UIModel {
     }
     
     static void cannotConnect(UI data, Exception ex) {
-        data.setMessage("Cannot connect " + ex.getMessage());
+        data.setMessage("Cannot connect " + ex.getMessage() + ". Should not you start the server project first?");
     }
     
     @Function static void addNew(UI ui) {
