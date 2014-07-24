@@ -7,10 +7,6 @@
     <body>
         <h1>Create, Read, Update, Delete</h1>
         
-        Server URL:
-        <input data-bind="value: url, valueUpdate: 'afterkeydown'" size="60">
-        <button data-bind="click: connect">Connect</button>
-        <br>
         <table>
             <thead>
                 <th>First name</th>
@@ -49,16 +45,24 @@
                 type: <input data-bind="value: type">
                 <button data-bind="click: $root.removePhoneEdited">-</button>
                 <button data-bind="click: $root.addPhoneEdited">+</button>
-                <span data-bind="text: validatePhone"></span>
+                <div data-bind="text: validatePhone"></div>
                 </div>
             </div>
+            <button data-bind="click: $root.commit">OK</button>
+            <button data-bind="click: $root.cancel">Cancel</button>
         </script>
 
         <div data-bind="template: { name: 'edit-contact', if: edited, data: edited }">
         </div>
-        <button data-bind="click: commit">Commit</button>
         
         <div data-bind="text: message"></div>
+
+        <hr>
+        <div>
+        Server URL:
+        <input data-bind="value: url, valueUpdate: 'afterkeydown'" size="60">
+        <button data-bind="click: connect">Connect</button>
+        </div>
         
         <!-- boot bck2brwsr -->
         <script type="text/javascript" src="bck2brwsr.js"></script>

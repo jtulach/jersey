@@ -71,14 +71,15 @@ public final class ContactsResource {
         return contacts;
     }
     
-    @PUT @Consumes(MediaType.APPLICATION_JSON)
+    @PUT @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public void updateContact(@PathParam("id") String id, Contact newContact) {
+    public List<Contact> updateContact(@PathParam("id") String id, Contact newContact) {
         for (int i = 0; i < contacts.size(); i++) {
             Contact c = contacts.get(i);
             if (id.equals(c.getId())) {
-                contacts.set(i, c);
-                return;
+                contacts.set(i, newContact);
+                newContact.setId(id);
+                return contacts;
             }
             
         }

@@ -77,6 +77,11 @@ final class UIModel {
         ui.deleteContact(ui.getUrl(), data.getId(), data);
     }
     
+    @Function static void cancel(UI ui) {
+        ui.setEdited(null);
+        ui.setSelected(null);
+    }
+    
     @Function static void commit(UI ui) {
         final Contact e = ui.getEdited();
         if (e == null) {
