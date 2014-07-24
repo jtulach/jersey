@@ -20,6 +20,12 @@ final class Contacts {
     @ComputedProperty static String fullName(
         String firstName, String lastName
     ) {
+        if (firstName == null) {
+            return lastName;
+        }
+        if (lastName == null) {
+            return firstName;
+        }
         return firstName + " " + lastName;
     }
     
