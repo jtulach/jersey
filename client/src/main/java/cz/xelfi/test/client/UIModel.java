@@ -29,11 +29,11 @@ final class UIModel {
         ui.setMessage("Loaded " + arr.size() + " contacts.");
     }
 
-    @OnReceive(method = "DELETE", url = "{url}", data = Contact.class, onError = "cannotConnect") 
-    static void deleteContact(UI ui, List<Contact> arr, Contact original) {
+    @OnReceive(method = "DELETE", url = "{url}/{id}", onError = "cannotConnect") 
+    static void deleteContact(UI ui, List<Contact> remainingOnes, Contact original) {
         ui.getContacts().clear();
-        ui.getContacts().addAll(arr);
-        ui.setMessage("Deleted " + original.getLastName() + ". " + arr.size() + " contacts remains.");
+        ui.getContacts().addAll(remainingOnes);
+        ui.setMessage("Deleted " + original.getLastName() + ". " + remainingOnes.size() + " contacts remains.");
     }
     
     @ModelOperation @Function static void connect(UI data) {
@@ -55,7 +55,7 @@ final class UIModel {
     }
 
     @Function static void delete(UI ui, Contact data) {
-        ui.deleteContact(ui.getUrl(), data, data);
+        ui.deleteContact(ui.getUrl(), data.getId(), data);
     }
     
     @Function static void addPhoneToEdited(UI ui) {

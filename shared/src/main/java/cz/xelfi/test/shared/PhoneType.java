@@ -10,6 +10,7 @@ public enum PhoneType {
 }
 
 @Model(className = "Contact", properties = {
+    @Property(name = "id", type = String.class),
     @Property(name = "firstName", type = String.class),
     @Property(name = "lastName", type = String.class),
     @Property(name = "address", type = Address.class),
