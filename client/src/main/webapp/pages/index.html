@@ -3,35 +3,53 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+table, th, td {
+   border: 1px solid black;
+}    
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td {
+    text-align: left;
+    background-color: linen;
+    color: graytext;
+}
+th {
+    height: 50px;
+    background-color: greenyellow;
+}
+        </style>
     </head>
     <body>
         <h1>Create, Read, Update, Delete</h1>
         
         <table>
-            <thead>
-                <th>First name</th>
-                <th>Last name</th>
+            <tr>
+                <th>Name</th>
                 <th>Address</th>
                 <th>Phone info</th>
-                <th></th>
-            </thead>
+                <th>
+                    <a href="#" data-bind="click: $root.addNew">Add new</a>
+                </th>
+            </tr>
             <tbody data-bind="foreach: contacts">
                 <tr>
-                    <td data-bind="text: firstName"></td>
-                    <td data-bind="text: lastName"></td>
+                    <td data-bind="text: fullName"></td>
                     <td data-bind="with: address">
                         <span data-bind="text: street"></span>
                         <span data-bind="text: town"></span>
                     </td>
                     <td data-bind="text: callInfo"></td>
-                    <td><a href="#" data-bind="click: $root.edit">Edit</a></td>
-                    <td><a href="#" data-bind="click: $root.delete">Delete</a></td>
+                    <td>
+                        <a href="#" data-bind="click: $root.edit">Edit</a>
+                        <a href="#" data-bind="click: $root.delete">Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
-        <button data-bind="click: $root.addNew">Add new</button>
-        
         <script type="text/html" id="edit-contact">
             First name: <input data-bind="value: firstName">
             Last name: <input data-bind="value: lastName">
