@@ -25,14 +25,14 @@ final class UIModel {
     static void loadContacts(UI ui, List<Contact> arr) {
         ui.getContacts().clear();
         ui.getContacts().addAll(arr);
-        ui.setMessage("Loaded " + arr.size() + " contacts.");
+        ui.setMessage("Loaded " + arr.size() + " contact(s).");
     }
 
     @OnReceive(method = "POST", url = "{url}", data = Contact.class, onError = "cannotConnect") 
     static void addContact(UI ui, List<Contact> updatedOnes, Contact newOne) {
         ui.getContacts().clear();
         ui.getContacts().addAll(updatedOnes);
-        ui.setMessage("Created " + newOne.getLastName() + ". There is " + updatedOnes.size() + " contacts.");
+        ui.setMessage("Created " + newOne.getLastName() + ". " + updatedOnes.size() + " contact(s) now.");
         ui.setSelected(null);
         ui.setEdited(null);
     }
@@ -40,7 +40,7 @@ final class UIModel {
     static void updateContact(UI ui, List<Contact> updatedOnes, Contact original) {
         ui.getContacts().clear();
         ui.getContacts().addAll(updatedOnes);
-        ui.setMessage("Updated " + original.getLastName() + ". There is " + updatedOnes.size() + " contacts.");
+        ui.setMessage("Updated " + original.getLastName() + ". " + updatedOnes.size() + " contact(s) now.");
         ui.setSelected(null);
         ui.setEdited(null);
     }
@@ -49,7 +49,7 @@ final class UIModel {
     static void deleteContact(UI ui, List<Contact> remainingOnes, Contact original) {
         ui.getContacts().clear();
         ui.getContacts().addAll(remainingOnes);
-        ui.setMessage("Deleted " + original.getLastName() + ". " + remainingOnes.size() + " contacts remains.");
+        ui.setMessage("Deleted " + original.getLastName() + ". " + remainingOnes.size() + " contact(s) now.");
     }
     
     @ModelOperation @Function static void connect(UI data) {
