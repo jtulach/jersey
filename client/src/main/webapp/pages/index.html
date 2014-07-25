@@ -77,17 +77,17 @@ button {
                 Street: <input data-bind="value: street">
                 Town: <input data-bind="value: town">
             </div>
-            <div data-bind="foreach: phones">
-                <div>
+            <span data-bind="foreach: phones">
+                <div class="warning" data-bind="text: validatePhone"></div>
                 Number: <input data-bind="value: number, valueUpdate: 'afterkeydown'">
                 type: <input data-bind="value: type">
                 <button data-bind="click: $root.removePhoneEdited">-</button>
-                <button data-bind="click: $root.addPhoneEdited">+</button>
-                <div class="warning" data-bind="text: validatePhone"></div>
-                </div>
+            </span>
+            <button data-bind="click: $root.addPhoneEdited">+</button>
+            <div>
+                <button data-bind="click: $root.commit">OK</button>
+                <button data-bind="click: $root.cancel">Cancel</button>
             </div>
-            <button data-bind="click: $root.commit">OK</button>
-            <button data-bind="click: $root.cancel">Cancel</button>
         </script>
 
         <div data-bind="template: { name: 'list-contacts', if: !edited() }">
