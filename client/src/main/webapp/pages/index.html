@@ -25,6 +25,12 @@ input {
     background: linen;
     margin: 0 0 10px 0;
 }
+select {
+    border: 3px solid gray; 
+    padding: 5px;
+    background: linen;
+    margin: 0 0 10px 0;
+}
 button {
     font-size: 1em;
     font-weight: bold;
@@ -82,7 +88,11 @@ button {
             <span data-bind="foreach: phones">
                 <div class="warning" data-bind="text: validate"></div>
                 Number: <input data-bind="value: number, valueUpdate: 'afterkeydown'">
-                type: <input data-bind="value: type">
+                type: <select data-bind="value: type">
+                    <option>HOME</option>
+                    <option>WORK</option>
+                    <option>MOBILE</option>
+                </select>
                 <button data-bind="click: $root.removePhoneEdited">-</button>
             </span>
             <button data-bind="click: $root.addPhoneEdited">+</button>
