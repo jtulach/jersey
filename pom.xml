@@ -9,7 +9,8 @@
         <module>shared</module>
     <module>client</module>
         <module>server</module>
-    </modules>
+    <module>js</module>
+  </modules>
     <properties>
         <net.java.html.version>1.0-SNAPSHOT</net.java.html.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -80,7 +80,7 @@ button {
                 Town: <input data-bind="value: town, valueUpdate: 'afterkeydown'">
             </div>
             <span data-bind="foreach: phones">
-                <div class="warning" data-bind="text: validatePhone"></div>
+                <div class="warning" data-bind="text: validate"></div>
                 Number: <input data-bind="value: number, valueUpdate: 'afterkeydown'">
                 type: <input data-bind="value: type">
                 <button data-bind="click: $root.removePhoneEdited">-</button>

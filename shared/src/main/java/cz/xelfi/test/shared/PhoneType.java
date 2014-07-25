@@ -75,7 +75,7 @@ final class Contacts {
         @Property(name = "type", type = PhoneType.class)
     })
     static class PhoneImpl {
-        @ComputedProperty static String validatePhone(String number) {
+        @ComputedProperty static String validate(String number) {
             if (number == null) {
                 return "Phone not specified!";
             }

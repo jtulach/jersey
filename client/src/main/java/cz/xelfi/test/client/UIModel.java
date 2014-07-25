@@ -1,5 +1,6 @@
 package cz.xelfi.test.client;
 
+import cz.xelfi.test.js.Dialogs;
 import cz.xelfi.test.shared.Contact;
 import cz.xelfi.test.shared.Phone;
 import cz.xelfi.test.shared.PhoneType;
@@ -95,6 +96,23 @@ final class UIModel {
         if (e == null) {
             return;
         }
+        String invalid = null;
+        if (e.getValidate() != null) {
+            invalid = e.getValidate();
+        } else if (e.getAddress().getValidate() != null) {
+            invalid = e.getAddress().getValidate();
+        } else for (Phone p : e.getPhones()) {
+            if (p.getValidate() != null) {
+                invalid = p.getValidate();
+                break;
+            }
+        }
+        if (invalid != null && !Dialogs.confirm("Not all data are valid (" + 
+                invalid + "). Do you want to proceed?", null
+        )) {
+            return;
+        }
+        
         final Contact s = ui.getSelected();
         if (s != null) {
             ui.updateContact(ui.getUrl(), s.getId(), e, e);

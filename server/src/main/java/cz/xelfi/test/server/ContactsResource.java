@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotAcceptableException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -52,7 +53,7 @@ public final class ContactsResource {
     @POST @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<Contact> addContact(Contact c) {
-        validatePhones(c);
+        validate(c);
         contacts.add(c);
         c.setId("X" + ++counter);
         return contacts;
@@ -86,9 +87,15 @@ public final class ContactsResource {
         throw new WebApplicationException(Status.NOT_FOUND);
     }
     
-    private static void validatePhones(Contact c) {
+    private static void validate(Contact c) {
+        if (c.getValidate() != null) {
+            throw new NotAcceptableException(c.getValidate());
+        } 
+        if (c.getAddress().getValidate() != null) {
+            throw new NotAcceptableException(c.getAddress().getValidate());
+        } 
         for (Phone phone : c.getPhones()) {
-            String err = phone.getValidatePhone();
+            String err = phone.getValidate();
             if (err != null) {
                 throw new javax.ws.rs.NotAcceptableException(err);
             }
