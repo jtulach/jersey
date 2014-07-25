@@ -12,7 +12,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>client</name>
+  <name>CRUD Client in DukeScript</name>
 
   <repositories>
       <repository>
