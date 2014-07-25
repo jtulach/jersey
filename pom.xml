@@ -14,6 +14,8 @@
     </modules>
     <properties>
         <net.java.html.version>0.8.3</net.java.html.version>
+        <bck2brwsr.version>0.9</bck2brwsr.version>
+        <nb.html.version>0.8.3</nb.html.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>

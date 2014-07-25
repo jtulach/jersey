@@ -9,7 +9,7 @@
 
   <groupId>cz.xelfi.test</groupId>
   <artifactId>client</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>CRUD Client in DukeScript</name>
@@ -40,12 +40,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <net.java.html.version>1.0-SNAPSHOT</net.java.html.version>
     <netbeans.compile.on.save>none</netbeans.compile.on.save>
     <project.mainclass>cz.xelfi.test.client.Main</project.mainclass>
-    <bck2brwsr.version>0.9</bck2brwsr.version>
     <bck2brwsr.obfuscationlevel>FULL</bck2brwsr.obfuscationlevel>
-    <nb.html.version>1.0-SNAPSHOT</nb.html.version>
     <nb.pages>index.html</nb.pages>
     <nb.cp>true</nb.cp>
   </properties>
@@ -205,9 +202,9 @@
       <version>0.3-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>cz.xelfi.test</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>js</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.3-SNAPSHOT</version>
       <type>jar</type>
     </dependency>
   </dependencies>
@@ -232,7 +229,7 @@
               <dependency>
                   <groupId>org.apidesign.brwsr</groupId>
                   <artifactId>ibrwsr</artifactId>
-                  <version>1.0-SNAPSHOT</version>
+                  <version>0.8</version>
                   <scope>runtime</scope>
               </dependency>
           </dependencies>
@@ -334,7 +331,7 @@
               <dependency>
                   <groupId>org.apidesign.brwsr</groupId>
                   <artifactId>dlvkbrwsr</artifactId>
-                  <version>1.0-SNAPSHOT</version>
+                  <version>0.8</version>
                   <type>jar</type>
               </dependency>
               <dependency>
