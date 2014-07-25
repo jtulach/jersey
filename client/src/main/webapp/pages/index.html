@@ -35,6 +35,9 @@ button {
     border-radius: 3px;
     cursor: pointer;
 }
+.warning {
+    color: red;
+}
         </style>
     </head>
     <body>
@@ -80,7 +83,7 @@ button {
                 type: <input data-bind="value: type">
                 <button data-bind="click: $root.removePhoneEdited">-</button>
                 <button data-bind="click: $root.addPhoneEdited">+</button>
-                <div data-bind="text: validatePhone"></div>
+                <div class="warning" data-bind="text: validatePhone"></div>
                 </div>
             </div>
             <button data-bind="click: $root.commit">OK</button>
