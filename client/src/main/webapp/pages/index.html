@@ -71,11 +71,13 @@ button {
         </script>
 
         <script type="text/html" id="edit-contact">
-            First name: <input data-bind="value: firstName">
-            Last name: <input data-bind="value: lastName">
+            <div class="warning" data-bind="text: validate"></div>
+            First name: <input data-bind="value: firstName, valueUpdate: 'afterkeydown'">
+            Last name: <input data-bind="value: lastName, valueUpdate: 'afterkeydown'">
             <div data-bind="with: address">
-                Street: <input data-bind="value: street">
-                Town: <input data-bind="value: town">
+                <div class="warning" data-bind="text: validate"></div>
+                Street: <input data-bind="value: street, valueUpdate: 'afterkeydown'">
+                Town: <input data-bind="value: town, valueUpdate: 'afterkeydown'">
             </div>
             <span data-bind="foreach: phones">
                 <div class="warning" data-bind="text: validatePhone"></div>
