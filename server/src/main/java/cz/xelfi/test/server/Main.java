@@ -54,6 +54,8 @@ final class Main implements ContainerResponseFilter {
         ContainerResponseContext r
     ) throws IOException {
         r.getHeaders().add("Access-Control-Allow-Origin", "*");
+        r.getHeaders().add("Access-Control-Allow-Credentials", "true");
+        r.getHeaders().add("Access-Control-Allow-Headers", "Content-Type");
         r.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
     }    
 }
