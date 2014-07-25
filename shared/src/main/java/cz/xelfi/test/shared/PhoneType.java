@@ -41,11 +41,34 @@ final class Contacts {
         return sb.toString();
     }
     
+    @ComputedProperty static String validate(
+        String firstName, String lastName
+    ) {
+        if (firstName == null || firstName.isEmpty()) {
+            return "Specify first name";
+        }
+        if (lastName == null || lastName.isEmpty()) {
+            return "Specify last name";
+        }
+        return null;
+    }
+    
     @Model(className = "Address", properties = {
         @Property(name = "street", type = String.class),
         @Property(name = "town", type = String.class)
     })
     static class AddressImpl {
+        @ComputedProperty static String validate(
+            String town, String street
+        ) {
+            if (street == null || street.isEmpty()) {
+                return "Specify street";
+            }
+            if (town == null || town.isEmpty()) {
+                return "Specify town";
+            }
+            return null;
+        }
     }
     @Model(className = "Phone", properties = {
         @Property(name = "number", type = String.class),
