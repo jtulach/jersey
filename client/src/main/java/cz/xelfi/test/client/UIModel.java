@@ -4,15 +4,14 @@ import cz.xelfi.test.shared.Contact;
 import cz.xelfi.test.shared.Phone;
 import cz.xelfi.test.shared.PhoneType;
 import java.util.List;
-import net.java.html.json.ComputedProperty;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
 import net.java.html.json.ModelOperation;
 import net.java.html.json.OnReceive;
 import net.java.html.json.Property;
 
-/** Model annotation generates class Data with 
- * one message property, boolean property and read only words property
+/** Generates UI class that provides the application logic model for
+ * the HTML page.
  */
 @Model(className = "UI", properties = {
     @Property(name = "url", type = String.class),
