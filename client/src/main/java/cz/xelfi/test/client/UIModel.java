@@ -21,6 +21,11 @@ import net.java.html.json.Property;
     @Property(name = "edited", type = Contact.class)
 })
 final class UIModel {
+    
+    //
+    // REST API callbacks
+    //
+    
     @OnReceive(url = "{url}", onError = "cannotConnect") 
     static void loadContacts(UI ui, List<Contact> arr) {
         ui.getContacts().clear();
@@ -51,13 +56,17 @@ final class UIModel {
         ui.getContacts().addAll(remainingOnes);
         ui.setMessage("Deleted " + original.getLastName() + ". " + remainingOnes.size() + " contact(s) now.");
     }
+
+    static void cannotConnect(UI data, Exception ex) {
+        data.setMessage("Cannot connect " + ex.getMessage() + ". Should not you start the server project first?");
+    }
+    
+    //
+    // UI callback bindings
+    //
     
     @ModelOperation @Function static void connect(UI data) {
         data.loadContacts(data.getUrl());
-    }
-    
-    static void cannotConnect(UI data, Exception ex) {
-        data.setMessage("Cannot connect " + ex.getMessage() + ". Should not you start the server project first?");
     }
     
     @Function static void addNew(UI ui) {
