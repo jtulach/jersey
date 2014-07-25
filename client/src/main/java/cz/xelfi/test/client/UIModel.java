@@ -122,7 +122,9 @@ final class UIModel {
     }
     
     @Function static void addPhoneEdited(UI ui) {
-        ui.getEdited().getPhones().add(new Phone("", PhoneType.HOME));
+        final List<Phone> phones = ui.getEdited().getPhones();
+        PhoneType t = PhoneType.values()[phones.size() % PhoneType.values().length];
+        phones.add(new Phone("", t));
     }
 
     @Function static void removePhoneEdited(UI ui, Phone data) {
