@@ -77,7 +77,6 @@ th {
         <div data-bind="template: { name: 'edit-contact', if: edited, data: edited }">
         </div>
         
-        <div data-bind="text: message"></div>
 
         <hr>
         <div>
@@ -85,6 +84,9 @@ th {
         <input data-bind="value: url, valueUpdate: 'afterkeydown'" size="60">
         <button data-bind="click: connect">Connect</button>
         </div>
+        
+        <br>
+        <div data-bind="text: message"></div>
         
         <!-- boot bck2brwsr -->
         <script type="text/javascript" src="bck2brwsr.js"></script>
