@@ -67,6 +67,10 @@ final class UIModel {
     //
     
     @ModelOperation @Function static void connect(UI data) {
+        final String u = data.getUrl();
+        if (u.endsWith("/")) {
+            data.setUrl(u.substring(0, u.length() - 1));
+        }
         data.loadContacts(data.getUrl());
     }
     
